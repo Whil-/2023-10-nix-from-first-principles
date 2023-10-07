@@ -3,7 +3,7 @@
 
   outputs = { self, nixpkgs, }:
   let
-    system = "aarch64-linux";
+    system = "aarch64-darwin";
     pkgs = import nixpkgs {inherit system;};
   in {
     packages.${system}.default =
@@ -12,7 +12,7 @@
         src = ./rust-hello;
         name = "rust-hello-1.0";
         inherit system;
-        nativeBuildInputs = [pkgs.cargo];
+        nativeBuildInputs = [pkgs.cargo pkgs.libiconv];
         buildPhase = ''
           cargo build --release
         '';
