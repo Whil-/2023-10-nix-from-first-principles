@@ -3,7 +3,7 @@ in pkgs.stdenv.mkDerivation {
     src = ./rust-hello;
     name = "rust-hello-1.0";
     system = "x86_64-linux";
-    nativeBuildInputs = [ pkgs.cargo ];
+    nativeBuildInputs = [ pkgs.cargo pkgs.libiconv];
     buildPhase = ''
       cargo build --release
     '';
